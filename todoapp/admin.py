@@ -3,4 +3,4 @@ from todoapp.models import ToDoEntry, ToDoList
 
 # Register your models here.
 
-admin.site.register(ToDoEntry, ToDoList)
+admin.site.register(ToDoList)
