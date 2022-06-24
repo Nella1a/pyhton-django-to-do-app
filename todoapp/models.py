@@ -15,8 +15,7 @@ class ToDoList(models.Model):
 
 
 class ToDoEntry(models.Model):
-  todo_titel = models.CharField(max_length=100)
-  description = models.TextField
+  titel = models.CharField(max_length=100)
   todo_list = models.ForeignKey(ToDoList, on_delete=models.CASCADE)
 
   def __str__(self):
