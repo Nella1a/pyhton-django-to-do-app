@@ -4,7 +4,10 @@
 {% for title in list%}
   <a href="{% url 'todos' title.id %}">
     <li>{{title.pk}} {{title.title}}</li>
-
   </a>
+
 {% endfor%}
 </ul>
+<a href="{% url 'add-list' %}">
+  <button>add new list</button>
+</a>

@@ -1,6 +1,6 @@
 
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
 from todoapp.models import ToDoEntry, ToDoList
 from django.urls import reverse, reverse_lazy
 
@@ -30,6 +30,36 @@ class DetailListView(ListView):
         context["todo_list"] = ToDoList.objects.get(id=self.kwargs["list_id"])
        # print("context 2:", context)
         return context
+
+
+class ToDoListCreate(CreateView):
+  model = ToDoList
+  template_name = "todoapp/add_todo.html"
+  fields = [
+    "title"
+  ]
+
+  def get_success_url(self):
+      return reverse_lazy("index")
+
+
+class ToDoTaskCreate(CreateView):
+  model = ToDoEntry
+  template_name = "todoapp/add_todo.html"
+  fields = [
+    "todo_titel",
+    "todo_list"
+  ]
+
+  def get_context_data(self):
+      context = super().get_context_data()
+       # print("context 1: ",context)
+      context["todo_list"] = ToDoList.objects.get(id=self.kwargs["list_id"])
+      print("context 2:", context)
+      return context
+
+  def get_success_url(self):
+      return reverse_lazy("index")
 
 
 
