@@ -47,9 +47,16 @@ class ToDoTaskCreate(CreateView):
   model = ToDoEntry
   template_name = "todoapp/add_todo.html"
   fields = [
-    "todo_title"
+    "todo_titel",
     "todo_list"
   ]
+
+  def get_context_data(self):
+      context = super().get_context_data()
+       # print("context 1: ",context)
+      context["todo_list"] = ToDoList.objects.get(id=self.kwargs["list_id"])
+      print("context 2:", context)
+      return context
 
   def get_success_url(self):
       return reverse_lazy("index")
