@@ -1,5 +1,10 @@
+<h1>to do lists</h1>
+
 <ul>
-{% for title in all_lists%}
-  <li>{{title.title}}</li>
+{% for title in list%}
+  <a href="{% url 'todos' title.pk %}">
+    <li>{{title.pk}} {{title.title}}</li>
+
+  </a>
 {% endfor%}
 </ul>

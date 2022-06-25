@@ -1,0 +1,16 @@
+
+
+<a href="{% url 'index' %}"><p>Detail View</p></a>
+<ul>
+  Hello {{title.pk}}
+  {% for name in list_todo%}
+
+      <a href="{% url 'update' name.pk %}">
+        <li>{{ name }} {{ name.pk }} {{ name.todo_list }}</li>
+
+      </a>
+
+  {% endfor %}
+
+</ul>
+ {{list_todo.todo_list}
