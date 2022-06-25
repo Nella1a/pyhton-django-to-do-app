@@ -4,6 +4,9 @@
 <a href="{% url 'todos' todo_list.id %}">
   <input type="button" value="cancle">
 </a>
+<a href="{% url 'delete' todo_list.id object.id%}">
+  <input type="button" value="delete">
+</a>
 </form>
 
 <p>{{object}}</p>
