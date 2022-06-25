@@ -2,7 +2,7 @@
 
 <ul>
 {% for title in list%}
-  <a href="{% url 'todos' title.pk %}">
+  <a href="{% url 'todos' title.id %}">
     <li>{{title.pk}} {{title.title}}</li>
 
   </a>

@@ -1,16 +1,17 @@
 
 
-<a href="{% url 'index' %}"><p>Detail View</p></a>
+<a href="{% url 'index' %}"><p>Back to all lists</p></a>
+list: {{todo_list}}
 <ul>
-  Hello {{title.pk}}
-  {% for name in list_todo%}
 
-      <a href="{% url 'update' name.pk %}">
-        <li>{{ name }} {{ name.pk }} {{ name.todo_list }}</li>
+  {% for task in list_todo%}
 
-      </a>
+ <a href="{% url 'update' todo_list.pk task.pk %}">
 
-  {% endfor %}
+    <li>{{task.pk}} {{task}}</li>
+
+  </a>
+{% endfor%}
 
 </ul>
  {{list_todo.todo_list}
