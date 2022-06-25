@@ -13,6 +13,7 @@ class AllListView(ListView):
   context_object_name = 'list'
 
 
+
 class DetailListView(ListView):
   model = ToDoEntry
   template_name = "todoapp/todo.html"
@@ -27,8 +28,10 @@ class DetailListView(ListView):
         context = super().get_context_data()
        # print("context 1: ",context)
         context["todo_list"] = ToDoList.objects.get(id=self.kwargs["list_id"])
-       # print("context 2:", context)
+        print("context 2:", context)
         return context
+
+
 
 
 class TodoUpdateView(UpdateView):
@@ -49,11 +52,11 @@ class TodoUpdateView(UpdateView):
         context = super().get_context_data()
        # print("context 1: ",context)
         context["todo_list"] = ToDoList.objects.get(id=self.kwargs["list_id"])
-       # print("context 2:", context)
+        print("context 2:", context)
         return context
 
   def get_success_url(self):
     context = super().get_context_data()
     context["todo_list"] = ToDoList.objects.get(id=self.kwargs["list_id"])
     x = ToDoList.objects.get(id=self.kwargs["list_id"])
-    return reverse("todos",args=[x.id])
+    return reverse("todos",kwargs={"list_id":x.id})

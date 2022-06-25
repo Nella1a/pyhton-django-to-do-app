@@ -1,7 +1,7 @@
 
 
-<a href="{% url 'index' %}"><p>Detail View</p></a>
-{{todo_list.pk}}
+<a href="{% url 'index' %}"><p>Back to all lists</p></a>
+list: {{todo_list}}
 <ul>
 
   {% for task in list_todo%}

@@ -1,4 +1,11 @@
 <form method="POST"> {% csrf_token %}
 {{form.as_p}}
 <input type="submit" value="update">
+<a href="{% url 'todos' todo_list.id %}">
+  <input type="button" value="cancle">
+</a>
 </form>
+
+<p>{{object}}</p>
+<p>{{todo}}</p>
+<p>{{todo_list.id}}</p>
